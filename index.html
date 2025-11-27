@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Ponte Elevatória - Blog Moderno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Header com efeito parallax */
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232c3e50"/><path d="M0 0L100 100M100 0L0 100" stroke="%233498db" stroke-width="1"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(transparent, #f8fafc);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Navegação moderna */
+        nav {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 1.2rem 1.5rem;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+        
+        /* Layout principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        main {
+            padding: 4rem 0;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Cards e elementos especiais */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Isso é essencial: corta a imagem para caber sem esticar/deformar */
+            display: block;    /* Remove espaços brancos indesejados abaixo da imagem */
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e1f5fe 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+        
+        .highlight-box::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            opacity: 0.2;
+        }
+        
+        .image-placeholder {
+            background: linear-gradient( #e2e8f0 0%, #cbd5e1 100%);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            color: #64748b;
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 0.5;
+        }
+        
+        /* Tabelas estilizadas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+        
+        /* Bloco de código moderno */
+        .code-block {
+            background: #1a1b26;
+            color: #c0caf5;
+            padding: 2rem;
+            border-radius: var(--radius);
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: rgba(0,0,0,0.2);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        
+        .code-block::after {
+            content: '•••';
+            position: absolute;
+            top: 12px;
+            left: 20px;
+            color: #565f89;
+            font-size: 1rem;
+        }
+        
+        .code-comment {
+            color: #565f89;
+        }
+        
+        .code-keyword {
+            color: #bb9af7;
+        }
+        
+        .code-function {
+            color: #7dcfff;
+        }
+        
+        .code-variable {
+            color: #73daca;
+        }
+        
+        .code-number {
+            color: #ff9e64;
+        }
+        
+        /* FAQ com acordeão */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: #f8fafc;
+            padding: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        /* Lista de melhorias */
+        .improvement-list {
+            list-style-type: none;
+        }
+        
+        .improvement-list li {
+            padding: 0.8rem 0;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .improvement-list li::before {
+            content: '\f0a4';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        /* Sugestões de vídeo */
+        .video-suggestion {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e1f5fe 100%);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            transition: transform 0.3s;
+        }
+        
+        .video-suggestion:hover {
+            transform: translateX(10px);
+        }
+        
+        .video-icon {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            color: var(--accent);
+        }
+        
+        /* Footer moderno */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .author-info {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .stagger-item {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Projeto de Ponte Elevatória com Arduino</h1>
+            <p class="subtitle">Uma demonstração prática de eletromagnetismo, automação e integração entre hardware e software</p>
+            <a href="#introducao" class="cta-button">Explorar Projeto</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-draw-polygon"></i>
+                <span>PonteElevatória</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#estrutura">Estrutura</a></li>
+                <li><a href="#eletronica">Eletrônica</a></li>
+                <li><a href="#eletromagnetismo">Eletromagnetismo</a></li>
+                <li><a href="#programacao">Programação</a></li>
+                <li><a href="#resultados">Resultados</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="introducao" class="section fade-in">
+            <h2>Introdução</h2>
+            <p>Este projeto apresenta o desenvolvimento de um protótipo de ponte elevatória construído com o objetivo de demonstrar, na prática, como campos magnéticos produzidos por correntes elétricas podem gerar movimento mecânico. A estrutura foi elaborada a partir de madeira, tubos de PVC e dobradiças metálicas, enquanto o movimento é realizado por quatro motores de passo 28BYJ-48 de 5V acionados por módulos ULN2003 e controlados por um Arduino Uno.</p>
+            
+            <div class="highlight-box">
+                <p>O protótipo foi desenvolvido no contexto das disciplinas de Modelagem e Simulação de Sistemas Elétricos e Magnéticos e de Fenômenos Elétricos, Magnéticos e Oscilatórios da Unicuritiba.</p>
+            </div>
+            
+            <p>A ponte elevatória é um exemplo clássico de aplicação de automação que combina conhecimentos de mecânica, eletrônica e programação. Neste artigo, exploraremos todos os aspectos do projeto, desde a fundamentação teórica até a implementação prática.</p>
+            
+            <div class="image-placeholder">
+                <i class="fas fa-image">
+                    <img src="assets/prontoo.jpg" alt="">
+                </i>
+            </div>
+        </section>
+        
+        <section id="estrutura" class="section fade-in">
+            <h2>Estrutura Mecânica</h2>
+            <p>A estrutura física da ponte elevatória foi projetada para ser robusta o suficiente para suportar os componentes eletrônicos e o movimento da ponte, mas também leve para não sobrecarregar os motores.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="assets/base.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3>Base Principal</h3>
+                        <p>Madeira com 105cm × 35cm, proporcionando estabilidade ao conjunto.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="assets/torre_apoio.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3>Torre de Apoio</h3>
+                        <p>Com 21cm de altura, serve como ponto de apoio para o mecanismo de elevação.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <img src="assets/ponte.jpg" alt="">
+                    </div>
+                    <div class="card-content">
+                        <h3>Ponte Articulada</h3>
+                        <p>Medindo 82cm × 15cm, construída com madeira e dobradiças metálicas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Desafios Mecânicos</h3>
+            <p>Um dos principais desafios foi garantir que a estrutura fosse suficientemente rígida para não flexionar durante o movimento, mas também leve o bastante para não exigir torque excessivo dos motores. A solução foi usar madeira de densidade média e reforçar as junções com cantoneiras metálicas.</p>
+            
+            <div class="image-placeholder">
+                <i class="fas fa-cogs"></i>
+                [Detalhe das dobradiças e do mecanismo de articulação]
+            </div>
+        </section>
+        
+        <section id="eletronica" class="section fade-in">
+            <h2>Eletrônica do Sistema</h2>
+            <p>O sistema eletrônico foi projetado para controlar com precisão o movimento dos motores de passo, garantindo sincronismo e confiabilidade.</p>
+            
+            <h3>Componentes Eletrônicos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Quantidade</th>
+                        <th>Função</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arduino Uno</td>
+                        <td>1</td>
+                        <td>Controlador principal do sistema</td>
+                    </tr>
+                    <tr>
+                        <td>Motor de passo 28BYJ-48</td>
+                        <td>4</td>
+                        <td>Responsáveis pelo movimento de elevação</td>
+                    </tr>
+                    <tr>
+                        <td>Módulo ULN2003</td>
+                        <td>4</td>
+                        <td>Driver para controle dos motores</td>
+                    </tr>
+                    <tr>
+                        <td>Fonte externa 5V</td>
+                        <td>1</td>
+                        <td>Alimentação dos motores</td>
+                    </tr>
+                    <tr>
+                        <td>Botões tácteis</td>
+                        <td>2</td>
+                        <td>Controle manual de subida e descida</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="highlight-box">
+                <p><strong>Nota importante:</strong> Inicialmente foi testado um ESP32, mas problemas de compatibilidade com as bibliotecas dos motores de passo levaram à migração para o Arduino Uno, que ofereceu maior estabilidade.</p>
+            </div>
+            
+            <div class="image-placeholder">
+                <i class="fas fa-project-diagram"></i>
+                [Diagrama esquemático completo do circuito]
+            </div>
+        </section>
+        
+        <section id="eletromagnetismo" class="section fade-in">
+            <h2>Princípios de Eletromagnetismo</h2>
+            <p>O funcionamento dos motores de passo baseia-se fundamentalmente nos princípios do eletromagnetismo, descobertos no século XIX e que revolucionaram a engenharia elétrica.</p>
+            
+            <h3>Campo Magnético × Corrente Elétrica</h3>
+            <p>Quando uma corrente elétrica percorre um condutor, gera ao seu redor um campo magnético. A intensidade desse campo é proporcional à corrente e sua direção pode ser determinada pela regra da mão direita.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Energia Elétrica</h3>
+                        <p>Fornecida às bobinas do motor para gerar campos magnéticos.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Campo Magnético</h3>
+                        <p>Gerado pelas bobinas que interage com o rotor do motor.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Movimento Mecânico</h3>
+                        <p>Resultado da interação entre campos magnéticos e ímãs permanentes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Conversão de Energia</h3>
+            <p>O processo de conversão de energia ocorre em três etapas principais:</p>
+            <ol>
+                <li>Energia elétrica é fornecida às bobinas do motor</li>
+                <li>As bobinas geram campos magnéticos que interagem com o rotor</li>
+                <li>Esta interação produz torque, convertendo energia elétrica em movimento mecânico</li>
+            </ol>
+        </section>
+        
+        <section id="programacao" class="section fade-in">
+            <h2>Lógica de Programação</h2>
+            <p>O controle da ponte elevatória é implementado através de uma máquina de estados que gerencia os movimentos de subida e descida com base em temporização acumulada.</p>
+            
+            <h3>Máquina de Estados</h3>
+            <p>O sistema opera com três estados principais:</p>
+            <ul>
+                <li><strong>Estado 0:</strong> Posição intermediária (repouso)</li>
+                <li><strong>Estado 1:</strong> Ponte fechada (totalmente baixada)</li>
+                <li><strong>Estado 2:</strong> Ponte aberta (totalmente elevada)</li>
+            </ul>
+            
+            <h3>Código Comentado</h3>
+            <div class="code-block">
+                <pre><code><span class="code-comment">// Inclusão da biblioteca para controle dos motores de passo</span>
+<span class="code-keyword">#include</span> &lt;Stepper.h&gt;
+
+<span class="code-comment">// Definição do número de passos por revolução dos motores</span>
+<span class="code-keyword">const int</span> STEPS_PER_REVOLUTION = 2048;
+
+<span class="code-comment">// Definição dos pinos dos motores</span>
+<span class="code-keyword">const int</span> motor1Pins[] = {8, 9, 10, 11};
+<span class="code-keyword">const int</span> motor2Pins[] = {4, 5, 6, 7};
+
+<span class="code-comment">// Criação dos objetos Stepper</span>
+Stepper motor1(STEPS_PER_REVOLUTION, motor1Pins[0], motor1Pins[1], motor1Pins[2], motor1Pins[3]);
+Stepper motor2(STEPS_PER_REVOLUTION, motor2Pins[0], motor2Pins[1], motor2Pins[2], motor2Pins[3]);
+
+<span class="code-comment">// Definição dos pinos dos botões</span>
+<span class="code-keyword">const int</span> buttonUp = 2;
+<span class="code-keyword">const int</span> buttonDown = 3;
+
+<span class="code-comment">// Variáveis de estado e temporização</span>
+<span class="code-keyword">int</span> bridgeState = 0; <span class="code-comment">// 0=intermediária, 1=fechada, 2=aberta</span>
+<span class="code-keyword">unsigned long</span> moveStartTime = 0;
+<span class="code-keyword">unsigned long</span> moveDuration = 13000; <span class="code-comment">// 13 segundos para abrir/fechar completamente</span>
+<span class="code-keyword">bool</span> isMoving = false;
+
+<span class="code-comment">// Configuração inicial</span>
+<span class="code-function">void</span> <span class="code-function">setup</span>() {
+  <span class="code-comment">// Configura os botões como entrada com pull-up</span>
+  <span class="code-function">pinMode</span>(buttonUp, INPUT_PULLUP);
+  <span class="code-function">pinMode</span>(buttonDown, INPUT_PULLUP);
+  
+  <span class="code-comment">// Configura a velocidade dos motores (RPM)</span>
+  motor1.<span class="code-function">setSpeed</span>(10);
+  motor2.<span class="code-function">setSpeed</span>(10);
+}
+
+<span class="code-comment">// Loop principal</span>
+<span class="code-function">void</span> <span class="code-function">loop</span>() {
+  <span class="code-comment">// Verifica se algum botão foi pressionado</span>
+  <span class="code-keyword">if</span> (<span class="code-function">digitalRead</span>(buttonUp) == LOW && !isMoving && bridgeState != 2) {
+    <span class="code-comment">// Inicia movimento de abertura</span>
+    startMovement(true);
+  } <span class="code-keyword">else if</span> (<span class="code-function">digitalRead</span>(buttonDown) == LOW && !isMoving && bridgeState != 1) {
+    <span class="code-comment">// Inicia movimento de fechamento</span>
+    startMovement(false);
+  }
+  
+  <span class="code-comment">// Controla movimento em andamento</span>
+  <span class="code-keyword">if</span> (isMoving) {
+    controlMovement();
+  }
+}</code></pre>
+            </div>
+        </section>
+        
+        <section id="resultados" class="section fade-in">
+            <h2>Resultados e Conclusões</h2>
+            <p>O desenvolvimento do projeto envolveu vários ciclos de teste e refinamento, com desafios interessantes que levaram a soluções criativas.</p>
+            
+            <h3>Problemas e Soluções</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Solução Implementada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Torque insuficiente com 2 motores</td>
+                        <td>Duplicação para 4 motores (dois de cada lado)</td>
+                    </tr>
+                    <tr>
+                        <td>Problemas de compatibilidade com ESP32</td>
+                        <td>Migração para Arduino Uno</td>
+                    </tr>
+                    <tr>
+                        <td>Falta de sincronismo entre motores</td>
+                        <td>Implementação de controle sequencial no código</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Resultados Obtidos</h3>
+            <ul>
+                <li>Ponte abre e fecha de forma estável e controlada</li>
+                <li>Torque suficiente com 4 motores para o movimento suave</li>
+                <li>Sincronismo garantido entre todos os motores</li>
+                <li>Movimentação previsível através do controle por tempo acumulado</li>
+            </ul>
+            
+            <div class="video-suggestion">
+                <div class="video-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div>
+                    <p><strong>Vídeo Sugerido:</strong> Demonstração completa do funcionamento da ponte elevatória, mostrando o movimento de abertura e fechamento, e destacando a sincronização dos motores.</p>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <p>Este projeto não apenas cumpriu seu objetivo educacional de demonstrar a conversão de energia elétrica em movimento mecânico através de campos magnéticos, mas também proporcionou valiosos insights sobre desafios de engenharia do mundo real, como dimensionamento de componentes, gestão de energia e sincronização de sistemas.</p>
+            </div>
+        </section>
+        
+        <section id="faq" class="section fade-in">
+            <h2>Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">Por que usar motores de passo em vez de motores DC comuns?</div>
+                <div class="faq-answer">
+                    <p>Motores de passo permitem controle de posição preciso sem a necessidade de sensores de feedback. Eles se movem em "passos" definidos, o que é ideal para aplicações que exigem posicionamento exato, como uma ponte elevatória.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Qual a vantagem do ULN2003 em relação a outros drivers?</div>
+                <div class="faq-answer">
+                    <p>O ULN2003 é um driver de baixo custo e fácil implementação para motores de passo unipolares. Ele fornece a corrente necessária para acionar as bobinas dos motores, protegendo o Arduino de sobrecarga.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">Por que o controle é baseado em tempo e não em sensores de posição?</div>
+                <div class="faq-answer">
+                    <p>O controle por tempo é uma solução mais simples e econômica. Para maior precisão, poderiam ser adicionados sensores de fim de curso, mas o controle temporal mostrou-se suficiente para esta aplicação.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="melhorias" class="section fade-in">
+            <h2>Melhorias Futuras</h2>
+            <p>Embora o projeto funcione conforme o esperado, existem várias melhorias que poderiam ser implementadas em versões futuras:</p>
+            
+            <ul class="improvement-list">
+                <li><strong>Sensores de posição:</strong> Implementação de sensores de fim de curso para maior precisão no posicionamento.</li>
+                <li><strong>Controle de velocidade variável:</strong> Adição de rampas de aceleração e desaceleração para movimentos mais suaves.</li>
+                <li><strong>Interface mais amigável:</strong> Substituição dos botões por um painel de controle com display e indicadores LED.</li>
+                <li><strong>Comunicação sem fio:</strong> Integração com Bluetooth ou Wi-Fi para controle remoto.</li>
+                <li><strong>Motores mais potentes:</strong> Uso de motores NEMA 17 ou similares para aplicações que exijam maior torque.</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Projeto de Ponte Elevatória</h3>
+            <p>Demonstração prática de eletromagnetismo e automação</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            
+            <p class="author-info">Autor: Matheus Barbosa Murawski – Unicuritiba – 2025</p>
+            <p class="author-info">Disciplinas: Modelagem e Simulação de Sistemas Elétricos e Magnéticos | Fenômenos Elétricos, Magnéticos e Oscilatórios</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Animação de entrada para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Efeito parallax no header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Destacar seção ativa na navegação
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Adicionar estilo para link ativo
+        const style = document.createElement('style');
+        style.textContent = `
+            .nav-links a.active {
+                color: var(--secondary) !important;
+            }
+            .nav-links a.active::after {
+                width: 80% !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
