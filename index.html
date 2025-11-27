@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Ponte Elevatória - Blog Moderno</title>
+    <title>Projeto Ponte Elevatória</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -34,10 +34,11 @@
         
         /* Header com efeito parallax */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85)), 
-            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232c3e50"/><path d="M0 0L100 100M100 0L0 100" stroke="%233498db" stroke-width="1"/></svg>');
+            background-image: url(assets/prontoo.jpg), linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85));
             background-size: cover;
             background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
             color: white;
             padding: 6rem 0 4rem;
             text-align: center;
@@ -991,7 +992,7 @@
             <p>O processo de conversão de energia ocorre em três etapas principais:</p>
             <ol>
                 <li>Energia elétrica é fornecida às bobinas do motor</li>
-                <li>As bobinas geram campos magnéticos que interagem com o rotor</li>
+                <li>As bobinas geram campos magnéticos que interagem com o motor</li>
                 <li>Esta interação produz torque, convertendo energia elétrica em movimento mecânico</li>
             </ol>
         </section>
@@ -1419,7 +1420,7 @@
             
             "ponte": "A estrutura é feita de madeira e tubos de PVC. O maior desafio foi o peso: com apenas 2 motores, ela não subia. Tivemos que adaptar o projeto para usar 4 motores sincronizados via código.",
             
-            "fisica": "O projeto demonstra o eletromagnetismo na prática. Ao passar corrente nas bobinas do motor, criamos campos magnéticos temporários que atraem o rotor (ímã permanente), convertendo energia elétrica em energia mecânica de rotação.",
+            "fisica": "O projeto demonstra o eletromagnetismo na prática. Ao passar corrente nas bobinas do motor, criamos campos magnéticos temporários que atraem o motor (ímã permanente), convertendo energia elétrica em energia mecânica de rotação.",
             
             "problemas": "O principal problema foi o torque insuficiente. A ponte era muito pesada para 2 motores. Solução: Dobramos para 4 motores e usamos uma fonte externa de 5V, pois o USB do computador não aguentava a corrente.",
             
